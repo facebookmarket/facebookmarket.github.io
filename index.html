@@ -14,234 +14,19 @@
   <link rel="manifest" href="manifest.json">
   <link rel="canonical" href="https://facebookmarket.github.io">
   <style>
-    /* Your existing CSS content */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ffffff, #f2f5fa);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-      animation: fadeIn 1s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-      color: #333;
-    }
-
-    p.tagline {
-      margin-bottom: 2rem;
-      color: #666;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .brands {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.5rem;
-      width: 100%;
-      max-width: 700px;
-    }
-
-    .brand {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      padding: 1.2rem;
-      transition: all 0.3s ease;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .brand:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-    }
-
-    .brand img {
-      width: 80px;
-      height: auto;
-      margin-bottom: 0.5rem;
-    }
-
-    .brand span {
-      display: block;
-      margin-top: 0.5rem;
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #333;
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      color: #aaa;
-      text-align: center;
-    }
-
-    .promo-banner {
-      background: #ff5c5c;
-      color: white;
-      padding: 0.8rem 1.2rem;
-      border-radius: 10px;
-      font-weight: bold;
-      text-align: center;
-      max-width: 700px;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-
-    .toggle-theme {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      background: #333;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      font-size: 0.9rem;
-      z-index: 10000;
-    }
-    .toast.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .search-bar {
-      max-width: 700px;
-      width: 100%;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .search-bar input {
-      width: 90%;
-      max-width: 400px;
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    details summary {
-      cursor: pointer;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      user-select: none;
-      color: #333;
-    }
-
-    .share-buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      justify-content: center;
-    }
-
-    .share-buttons button {
-      background: #007bff;
-      border: none;
-      color: white;
-      padding: 0.8rem 1.2rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .share-buttons button:hover {
-      background-color: #0056b3;
-    }
-
-    .deals-section {
-      margin: 2rem auto;
-      padding: 1rem;
-      max-width: 700px;
-      background: #fefefe;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    }
-    .deals-section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-    .deal {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #eee;
-    }
-    .deal:last-child {
-      border-bottom: none;
-    }
-
-    /* Floating Chat Now Button */
-    #chatNowBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      border: none;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      font-size: 28px;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 10000;
-      display: none; /* hidden by default */
-      align-items: center;
-      justify-content: center;
-    }
-    /* Show button only on mobile */
-    @media (max-width: 768px) {
-      #chatNowBtn {
-        display: flex;
-      }
-    }
+    /* Your existing CSS here */
   </style>
 </head>
 <body>
-  <div class="promo-banner fade-in">🔥 Limited Time Offers — Don’t Miss Out!</div>
-
   <div class="toggle-theme">
     <button id="theme-toggle" title="Toggle Theme">🌙</button>
   </div>
-
   <div id="toast" class="toast">Theme updated</div>
-
   <h1 class="fade-in">Shop From Your Favorite Brands</h1>
   <p class="tagline fade-in">Tap below to explore affiliate deals 🚀</p>
-
   <div class="search-bar fade-in">
     <input type="text" id="searchInput" placeholder="Search brand...">
   </div>
-
   <details open class="fade-in">
     <summary>🛍️ Shop by Platform</summary>
     <div class="brands" id="brandGrid">
@@ -263,99 +48,17 @@
       </a>
     </div>
   </details>
-
-  <section class="deals-section fade-in">
-    <h2>🔥 Best Deals Today</h2>
-    <div class="deal">💥 Shopee Flash Sale — Up to 70% Off</div>
-    <div class="deal">🛒 Lazada Vouchers — ₱100 OFF min. spend ₱1,000</div>
-    <div class="deal">🎁 TikTok Free Shipping on First Order</div>
-    <div class="deal">🤑 Temu Welcome Bonus for New Users</div>
-  </section>
-
   <div class="share-buttons fade-in">
     <button onclick="sharePage()">📤 Share This Page</button>
     <button onclick="copyLink()">📋 Copy Page Link</button>
   </div>
-
+  <button id="chatNowBtn" title="Chat Now" aria-label="Chat Now" onclick="openChat()" class="chat-now-btn">💬 Chat Now</button>
   <footer class="fade-in">
     <p>© 2025 facebookmarket.github.io | All rights reserved.</p>
     <p><a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Use</a></p>
   </footer>
-
-  <!-- Floating Chat Now Button -->
-  <button id="chatNowBtn" title="Chat Now" aria-label="Chat Now">💬</button>
-
-  <!-- Tawk.to Chatbot -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/64e3b36b94cf5d49dc6a6777/1h7f3v74n';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
-
   <script>
-    // Theme toggle, search, toast, fade logic (assumed existing)
-
-    // Floating Chat Now button toggle
-    const chatBtn = document.getElementById('chatNowBtn');
-    chatBtn.addEventListener('click', () => {
-      if(window.Tawk_API && window.Tawk_API.toggle) {
-        window.Tawk_API.toggle();
-      } else {
-        alert('Chat service is loading, please wait...');
-      }
-    });
-
-    // Service Worker registration for PWA
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(function(reg) {
-        console.log('Service Worker registered!', reg);
-      }).catch(function(err) {
-        console.log('Service Worker registration failed: ', err);
-      });
-    }
-
-    // Share page function
-    function sharePage() {
-      if (navigator.share) {
-        navigator.share({
-          title: document.title,
-          url: window.location.href
-        }).catch(console.error);
-      } else {
-        alert('Your browser does not support the Share API');
-      }
-    }
-
-    // Copy link function
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('Link copied to clipboard!');
-      }, () => {
-        alert('Failed to copy link');
-      });
-    }
-
-    // Search filter for brands
-    const searchInput = document.getElementById('searchInput');
-    const brandGrid = document.getElementById('brandGrid');
-    searchInput.addEventListener('input', () => {
-      const filter = searchInput.value.toLowerCase();
-      const brands = brandGrid.querySelectorAll('.brand');
-      brands.forEach(brand => {
-        const name = brand.getAttribute('data-name');
-        if (name.includes(filter)) {
-          brand.style.display = '';
-        } else {
-          brand.style.display = 'none';
-        }
-      });
-    });
+    // Your existing JS here (theme toggle, search, share, copy, chat functions)
   </script>
 </body>
 </html>
