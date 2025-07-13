@@ -3,60 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Affiliate Hub</title>
+  <title>Shop From Your Favorite Brands</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffffff, #f2f5fa);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: #f9f9f9;
+      padding: 2rem 1rem;
+      animation: fadeIn 1s ease-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h1 {
-      margin-bottom: 2rem;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: #333;
     }
+
+    p.tagline {
+      margin-bottom: 2rem;
+      color: #666;
+      font-size: 1rem;
+      text-align: center;
+    }
+
     .brands {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
       width: 100%;
-      max-width: 600px;
+      max-width: 700px;
     }
-    .brands a {
-      display: block;
-      text-align: center;
+
+    .brand {
       background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+      text-align: center;
+      cursor: pointer;
     }
-    .brands a:hover {
-      transform: scale(1.05);
+
+    .brand:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
     }
-    .brands img {
-      width: 100px;
+
+    .brand img {
+      width: 80px;
       height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>Visit Our Stores</h1>
+
+  <h1>Shop From Your Favorite Brands</h1>
+  <p class="tagline">Click a logo to shop and support us through affiliate links 🚀</p>
+
   <div class="brands">
-    <a href="https://s.lazada.com.ph/s.YOURCODE" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Lazada_%282019%29.svg" alt="Lazada" />
+    <a href="https://s.lazada.com.ph/s.YOURCODE" target="_blank" class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Lazada_%282019%29.svg" alt="Lazada">
+      <span>Lazada</span>
     </a>
-    <a href="https://s.shopee.ph/YOURCODE" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Shopee_logo.svg" alt="Shopee" />
+    <a href="https://s.shopee.ph/YOURCODE" target="_blank" class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Shopee_logo.svg" alt="Shopee">
+      <span>Shopee</span>
     </a>
-    <a href="https://www.tiktok.com/@YOURAFFILIATE" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok" />
+    <a href="https://www.tiktok.com/@YOURAFFILIATE" target="_blank" class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok">
+      <span>TikTok Shop</span>
     </a>
-    <a href="https://temu.to/m/YOURCODE" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Temu_Logo.svg/512px-Temu_Logo.svg.png" alt="Temu" />
+    <a href="https://temu.to/m/YOURCODE" target="_blank" class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Temu_Logo.svg/512px-Temu_Logo.svg.png" alt="Temu">
+      <span>Temu</span>
     </a>
   </div>
+
+  <footer>© 2025 facebookmarket.github.io | All rights reserved.</footer>
+
 </body>
 </html>
