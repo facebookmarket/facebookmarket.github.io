@@ -14,7 +14,169 @@
   <link rel="manifest" href="manifest.json">
   <link rel="canonical" href="https://facebookmarket.github.io">
   <style>
-    /* Your existing CSS here */
+    /* Example minimal CSS based on previous style, promo banner removed */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffffff, #f2f5fa);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: #333;
+    }
+
+    p.tagline {
+      margin-bottom: 2rem;
+      color: #666;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .brands {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .brand {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .brand:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .brand img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .search-bar {
+      margin-bottom: 1.5rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .share-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .share-buttons button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .share-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    #chatNowBtn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #25d366;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+
+    #chatNowBtn:hover {
+      background-color: #128c4a;
+    }
   </style>
 </head>
 <body>
@@ -52,13 +214,96 @@
     <button onclick="sharePage()">📤 Share This Page</button>
     <button onclick="copyLink()">📋 Copy Page Link</button>
   </div>
-  <button id="chatNowBtn" title="Chat Now" aria-label="Chat Now" onclick="openChat()" class="chat-now-btn">💬 Chat Now</button>
+  <button id="chatNowBtn" title="Chat Now" aria-label="Chat Now" onclick="openChat()">💬</button>
   <footer class="fade-in">
     <p>© 2025 facebookmarket.github.io | All rights reserved.</p>
     <p><a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Use</a></p>
   </footer>
   <script>
-    // Your existing JS here (theme toggle, search, share, copy, chat functions)
+    // Theme toggle script
+    const themeToggle = document.getElementById('theme-toggle');
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙';
+      }
+      localStorage.setItem('theme', theme);
+      showToast('Theme updated');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
+
+    // Load saved theme on page load
+    window.addEventListener('load', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        setTheme('dark');
+      }
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const brandGrid = document.getElementById('brandGrid');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const brands = brandGrid.querySelectorAll('.brand');
+      brands.forEach(brand => {
+        const name = brand.getAttribute('data-name');
+        if (name.includes(filter)) {
+          brand.style.display = '';
+        } else {
+          brand.style.display = 'none';
+        }
+      });
+    });
+
+    // Share and copy link
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          url: window.location.href
+        }).catch(console.error);
+      } else {
+        alert('Sharing not supported on this browser.');
+      }
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => alert('Link copied to clipboard!'))
+        .catch(() => alert('Failed to copy link.'));
+    }
+
+    // Chat button function placeholder
+    function openChat() {
+      alert('Chat support coming soon!');
+    }
+
+    // Service Worker registration (optional PWA)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registered!', reg))
+        .catch(err => console.log('Service Worker registration failed:', err));
+    }
   </script>
 </body>
 </html>
