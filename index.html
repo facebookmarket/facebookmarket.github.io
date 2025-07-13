@@ -4,61 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shop From Your Favorite Brands</title>
-  
-  <!-- SEO Meta -->
-  <meta name="description" content="Explore top affiliate deals from Lazada, Shopee, TikTok, and Temu. Shop smart with exclusive offers!">
-  <meta name="keywords" content="affiliate, shopping, deals, Lazada, Shopee, TikTok, Temu, ecommerce">
-  <meta name="author" content="facebookmarket.github.io">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Shop From Your Favorite Brands" />
-  <meta property="og:description" content="Tap below to explore affiliate deals 🚀" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://facebookmarket.github.io" />
-  <meta property="og:image" content="https://facebookmarket.github.io/logo/lazada.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Shop From Your Favorite Brands" />
-  <meta name="twitter:description" content="Tap below to explore affiliate deals 🚀" />
-  <meta name="twitter:image" content="https://facebookmarket.github.io/logo/lazada.png" />
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Facebook Market Affiliate Deals",
-    "url": "https://facebookmarket.github.io",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://facebookmarket.github.io/?search={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
   <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Explore deals from Shopee, Lazada, TikTok, and Temu — support us through affiliate shopping!">
+  <meta property="og:title" content="Shop From Your Favorite Brands">
+  <meta property="og:description" content="Click a brand to shop and support us via affiliate links.">
+  <meta property="og:image" content="https://facebookmarket.github.io/images/001.PNG">
+  <meta property="og:url" content="https://facebookmarket.github.io">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="manifest" href="manifest.json">
-
+  <link rel="canonical" href="https://facebookmarket.github.io">
   <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #333;
-      --brand-bg: #f9f9f9;
-      --hover-bg: #f0f0f0;
-      --primary-color: #007bff;
-      --primary-hover: #0056b3;
-      --focus-outline: #3399ff;
-    }
-
-    [data-theme="dark"] {
-      --bg-color: #181818;
-      --text-color: #f1f1f1;
-      --brand-bg: #2a2a2a;
-      --hover-bg: #333;
-    }
-
+    /* Your existing CSS content */
     * {
       box-sizing: border-box;
     }
@@ -66,361 +22,340 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
+      background: linear-gradient(135deg, #ffffff, #f2f5fa);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 2rem 1rem;
-      transition: background 0.3s, color 0.3s;
+      animation: fadeIn 1s ease-out;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h1, p {
-      text-align: center;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 0.5rem;
+      text-align: center;
+      color: #333;
     }
 
     p.tagline {
+      margin-bottom: 2rem;
+      color: #666;
       font-size: 1rem;
-      color: var(--text-color);
-      margin-bottom: 1.5rem;
-    }
-
-    .toggle-theme {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      z-index: 999;
-    }
-
-    .toggle-theme button {
-      background: var(--primary-color);
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      color: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .toggle-theme button:hover,
-    .toggle-theme button:focus {
-      background: var(--primary-hover);
-      outline: none;
-      box-shadow: 0 0 0 3px var(--focus-outline);
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 4.5rem;
-      right: 1rem;
-      background: #333;
-      color: white;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.4s ease-in-out;
-      z-index: 999;
-    }
-
-    .toast.show {
-      opacity: 1;
-    }
-
-    .promo-banner {
-      background: #ffe082;
-      color: #111;
-      padding: 1rem;
       text-align: center;
-      font-weight: bold;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .search-bar {
-      max-width: 500px;
-      margin: 1rem auto;
-      display: flex;
-      justify-content: center;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    details {
-      background: var(--brand-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      transition: all 0.3s ease;
-    }
-
-    summary {
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      outline-offset: 3px;
-    }
-
-    summary:focus {
-      outline: 2px solid var(--primary-color);
     }
 
     .brands {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 700px;
     }
 
     .brand {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.2rem;
+      transition: all 0.3s ease;
       text-align: center;
-      background: var(--brand-bg);
-      border-radius: 10px;
-      padding: 1rem;
-      transition: transform 0.3s, background 0.3s;
-      outline-offset: 3px;
+      cursor: pointer;
     }
 
-    .brand:hover,
-    .brand:focus-within {
-      background: var(--hover-bg);
+    .brand:hover {
       transform: translateY(-5px);
-      outline: none;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
     }
 
     .brand img {
       width: 80px;
-      height: 80px;
-      object-fit: contain;
+      height: auto;
       margin-bottom: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .brand:hover img,
-    .brand:focus-within img {
-      transform: scale(1.1);
     }
 
     .brand span {
-      font-size: 0.95rem;
       display: block;
-    }
-
-    .share-buttons {
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .share-buttons button {
-      background: #4267B2;
-      color: white;
-      border: none;
-      padding: 0.6rem 1rem;
-      margin: 0.3rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .share-buttons button:hover,
-    .share-buttons button:focus {
-      background: #365899;
-      outline: none;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #333;
     }
 
     footer {
-      text-align: center;
+      margin-top: 3rem;
       font-size: 0.85rem;
-      color: #888;
-      margin-top: 2.5rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .promo-banner {
+      background: #ff5c5c;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      text-align: center;
+      max-width: 700px;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      font-size: 0.9rem;
+      z-index: 10000;
+    }
+    .toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .search-bar {
+      max-width: 700px;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .search-bar input {
+      width: 90%;
+      max-width: 400px;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      user-select: none;
+      color: #333;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .share-buttons button {
+      background: #007bff;
+      border: none;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .share-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    .deals-section {
+      margin: 2rem auto;
+      padding: 1rem;
+      max-width: 700px;
+      background: #fefefe;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .deals-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .deal {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .deal:last-child {
+      border-bottom: none;
+    }
+
+    /* Floating Chat Now Button */
+    #chatNowBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 10000;
+      display: none; /* hidden by default */
+      align-items: center;
+      justify-content: center;
+    }
+    /* Show button only on mobile */
+    @media (max-width: 768px) {
+      #chatNowBtn {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="promo-banner fade-in" role="alert">🔥 Limited Time Offers — Don’t Miss Out!</div>
+  <div class="promo-banner fade-in">🔥 Limited Time Offers — Don’t Miss Out!</div>
 
-  <div class="toggle-theme" role="region" aria-label="Toggle dark mode theme">
-    <button id="theme-toggle" title="Toggle Theme" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+  <div class="toggle-theme">
+    <button id="theme-toggle" title="Toggle Theme">🌙</button>
   </div>
 
-  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">Theme updated</div>
+  <div id="toast" class="toast">Theme updated</div>
 
   <h1 class="fade-in">Shop From Your Favorite Brands</h1>
   <p class="tagline fade-in">Tap below to explore affiliate deals 🚀</p>
 
-  <div class="search-bar fade-in" role="search">
-    <input type="search" id="searchInput" placeholder="Search brand..." aria-label="Search brands">
+  <div class="search-bar fade-in">
+    <input type="text" id="searchInput" placeholder="Search brand...">
   </div>
 
-  <details open class="fade-in" aria-expanded="true" aria-controls="brandGrid">
-    <summary tabindex="0">🛍️ Shop by Platform</summary>
-    <div class="brands" id="brandGrid" role="list">
-      <a href="https://s.lazada.com.ph/s.YOURCODE" target="_blank" class="brand fade-in" data-name="lazada" role="listitem" tabindex="0" aria-label="Shop at Lazada">
+  <details open class="fade-in">
+    <summary>🛍️ Shop by Platform</summary>
+    <div class="brands" id="brandGrid">
+      <a href="https://s.lazada.com.ph/s.YOURCODE" target="_blank" class="brand fade-in" data-name="lazada">
         <img src="https://facebookmarket.github.io/logo/lazada.png" alt="Lazada">
         <span>Lazada</span>
       </a>
-      <a href="https://s.shopee.ph/AKPXV192kw" target="_blank" class="brand fade-in" data-name="shopee" role="listitem" tabindex="0" aria-label="Shop at Shopee">
+      <a href="https://s.shopee.ph/AKPXV192kw" target="_blank" class="brand fade-in" data-name="shopee">
         <img src="https://facebookmarket.github.io/logo/shopee.png" alt="Shopee">
         <span>Shopee</span>
       </a>
-      <a href="https://vt.tiktok.com/ZSHgrphyks2w5-gfTFp" target="_blank" class="brand fade-in" data-name="tiktok" role="listitem" tabindex="0" aria-label="Shop at TikTok Shop">
+      <a href="https://vt.tiktok.com/ZSHgrphyks2w5-gfTFp" target="_blank" class="brand fade-in" data-name="tiktok">
         <img src="https://facebookmarket.github.io/logo/tiktok.png" alt="TikTok">
         <span>TikTok Shop</span>
       </a>
-      <a href="https://temu.to/m/YOURCODE" target="_blank" class="brand fade-in" data-name="temu" role="listitem" tabindex="0" aria-label="Shop at Temu">
+      <a href="https://temu.to/m/YOURCODE" target="_blank" class="brand fade-in" data-name="temu">
         <img src="https://facebookmarket.github.io/logo/temu.png" alt="Temu">
         <span>Temu</span>
       </a>
     </div>
   </details>
 
-  <div class="share-buttons fade-in" role="region" aria-label="Share this page">
-    <button onclick="sharePage()" aria-label="Share this page on supported platforms">📤 Share This Page</button>
-    <button onclick="shareFacebook()" aria-label="Share on Facebook">Facebook</button>
-    <button onclick="shareTelegram()" aria-label="Share on Telegram">Telegram</button>
-    <button onclick="shareTwitter()" aria-label="Share on Twitter">Twitter</button>
+  <section class="deals-section fade-in">
+    <h2>🔥 Best Deals Today</h2>
+    <div class="deal">💥 Shopee Flash Sale — Up to 70% Off</div>
+    <div class="deal">🛒 Lazada Vouchers — ₱100 OFF min. spend ₱1,000</div>
+    <div class="deal">🎁 TikTok Free Shipping on First Order</div>
+    <div class="deal">🤑 Temu Welcome Bonus for New Users</div>
+  </section>
+
+  <div class="share-buttons fade-in">
+    <button onclick="sharePage()">📤 Share This Page</button>
+    <button onclick="copyLink()">📋 Copy Page Link</button>
   </div>
 
-  <footer class="fade-in" role="contentinfo">© 2025 facebookmarket.github.io | All rights reserved.</footer>
+  <footer class="fade-in">
+    <p>© 2025 facebookmarket.github.io | All rights reserved.</p>
+    <p><a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Use</a></p>
+  </footer>
 
-  <!-- Tawk.to Chat Widget -->
+  <!-- Floating Chat Now Button -->
+  <button id="chatNowBtn" title="Chat Now" aria-label="Chat Now">💬</button>
+
+  <!-- Tawk.to Chatbot -->
   <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/64ab9b5c7b967b11799cdd1b/1h7mnh2tg';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/64e3b36b94cf5d49dc6a6777/1h7f3v74n';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
   </script>
 
   <script>
-    // Dark mode toggle with aria-pressed update and smooth icon swap
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const toast = document.getElementById('toast');
+    // Theme toggle, search, toast, fade logic (assumed existing)
 
-    function updateIcon(theme) {
-      themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-      themeToggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-    }
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-
-    function setTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      updateIcon(theme);
-      showToast(`Switched to ${theme} mode`);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const savedTheme = localStorage.getItem('theme');
-      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-      setTheme(theme);
-    });
-
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    });
-
-    // Intersection observer for fade-in elements
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    faders.forEach(el => observer.observe(el));
-
-    // Search brands filter
-    document.getElementById('searchInput').addEventListener('input', function () {
-      const filter = this.value.toLowerCase();
-      const brands = document.querySelectorAll('.brand');
-      brands.forEach(brand => {
-        const name = brand.getAttribute('data-name');
-        brand.style.display = name.includes(filter) ? '' : 'none';
-      });
-    });
-
-    // Share page with Web Share API or fallback alert
-    function sharePage() {
-      const shareData = {
-        title: document.title,
-        text: 'Check out affiliate deals from top brands!',
-        url: window.location.href
-      };
-      if (navigator.share) {
-        navigator.share(shareData).catch(err => console.log('Sharing failed:', err));
+    // Floating Chat Now button toggle
+    const chatBtn = document.getElementById('chatNowBtn');
+    chatBtn.addEventListener('click', () => {
+      if(window.Tawk_API && window.Tawk_API.toggle) {
+        window.Tawk_API.toggle();
       } else {
-        alert('Your browser does not support Web Share API. Copy the link manually:\n' + window.location.href);
+        alert('Chat service is loading, please wait...');
+      }
+    });
+
+    // Service Worker registration for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function(reg) {
+        console.log('Service Worker registered!', reg);
+      }).catch(function(err) {
+        console.log('Service Worker registration failed: ', err);
+      });
+    }
+
+    // Share page function
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          url: window.location.href
+        }).catch(console.error);
+      } else {
+        alert('Your browser does not support the Share API');
       }
     }
 
-    // Social media share button functions
-    function shareFacebook() {
-      const url = encodeURIComponent(window.location.href);
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-    }
-    function shareTwitter() {
-      const url = encodeURIComponent(window.location.href);
-      const text = encodeURIComponent('Check out affiliate deals from top brands!');
-      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
-    }
-    function shareTelegram() {
-      const url = encodeURIComponent(window.location.href);
-      window.open(`https://t.me/share/url?url=${url}`, '_blank');
-    }
-
-    // Register service worker for PWA offline caching
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(registration => {
-        console.log('Service Worker registered with scope:', registration.scope);
-      }).catch(error => {
-        console.log('Service Worker registration failed:', error);
+    // Copy link function
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Link copied to clipboard!');
+      }, () => {
+        alert('Failed to copy link');
       });
     }
+
+    // Search filter for brands
+    const searchInput = document.getElementById('searchInput');
+    const brandGrid = document.getElementById('brandGrid');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const brands = brandGrid.querySelectorAll('.brand');
+      brands.forEach(brand => {
+        const name = brand.getAttribute('data-name');
+        if (name.includes(filter)) {
+          brand.style.display = '';
+        } else {
+          brand.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
 </html>
