@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Affiliate Hub</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    h1 {
+      margin-bottom: 2rem;
+    }
+    .brands {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+    .brands a {
+      display: block;
+      text-align: center;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .brands a:hover {
+      transform: scale(1.05);
+    }
+    .brands img {
+      width: 100px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visit Our Affiliate Stores</h1>
+  <div class="brands">
+    <a href="https://s.lazada.com.ph/s.YOURCODE" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Lazada_%282019%29.svg" alt="Lazada" />
+    </a>
+    <a href="https://s.shopee.ph/YOURCODE" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Shopee_logo.svg" alt="Shopee" />
+    </a>
+    <a href="https://www.tiktok.com/@YOURAFFILIATE" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok" />
+    </a>
+    <a href="https://temu.to/m/YOURCODE" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Temu_Logo.svg/512px-Temu_Logo.svg.png" alt="Temu" />
+    </a>
+  </div>
+</body>
+</html>
